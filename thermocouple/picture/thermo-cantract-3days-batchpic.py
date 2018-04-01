@@ -146,6 +146,17 @@ for t in total:
             
             result.to_csv(ipath+'\\'+t+'\\'+h[1]+'\\'+str(w)+'-'+str(q)+'.csv',columns = columns)
 
+#------------------------------移动最终文件夹到指定目录---------------------------#
+mExist = os.path.exists(r'C:\Users\DELL\Desktop\处理数据\picture\thermo\日循环')
+if not mExist:
+    os.mkdir(r'C:\Users\DELL\Desktop\处理数据\picture\thermo\日循环')
+else:
+    pass
+
+jfile = os.listdir(ipath)
+for j in jfile:
+    shutil.move(ipath+'\\'+j,r'C:\Users\DELL\Desktop\处理数据\picture\thermo\日循环'+'\\'+j)
+
 
 
 
