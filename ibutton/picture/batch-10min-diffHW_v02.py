@@ -110,7 +110,7 @@ for v in vfile:
                 y2 = data2.iloc[:,3]
                 y3 = data3.iloc[:,3]
 
-                fig = plt.figure(figsize=(12,9),dpi=160)
+                fig = plt.figure(figsize=(12,9))
                 ax = fig.add_subplot(1,1,1)
                 
                 plt.plot(x,y1,linestyle='-',marker='D',markersize=5,markerfacecolor='none',markevery=6,linewidth=0.8,label=b+'-HW1-'+dict[bb]+'-'+v)
