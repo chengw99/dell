@@ -57,7 +57,7 @@ for name in l:
             plt.xlim(0,143)
             plt.ylim(0,10)
             plt.xlabel('time',fontsize = 12)
-            plt.ylabel('Precipitation(inches)',rotation = 90,fontsize = 12)
+            plt.ylabel('Precipitation(mm)',rotation = 90,fontsize = 12)
             plt.minorticks_on()
             xticks = ax.set_xticks([0,24,48,72,96,120,143])  #此命令行可以确定x轴标签的位置
             xlabels = ax.set_xticklabels(['0:00','4:00','8:00','12:00','16:00','20:00','24:00'])  #此命令行可以命名x坐标轴的标签内容
