@@ -5,6 +5,7 @@ Created on Wed Apr  4 15:16:16 2018
 @author: DELL
 """
 import os
+import glob
 import shutil
 import pandas as pd
 import numpy as np
@@ -37,22 +38,21 @@ for name in l:
         else:
             pass
     #---------------------------------获取数据----------------------------------#
-    file = os.listdir(gpath+'\\'+name+'\\'+r'201705')
+    file = os.listdir(gpath+'\\'+name+'\\'+r'201706')
     for f in file:
-        shutil.copyfile(gpath+'\\'+name+'\\'+r'201705'+'\\'+f,
+        shutil.copyfile(gpath+'\\'+name+'\\'+r'201706'+'\\'+f,
                         ipath+'\\'+name+'\\'+r'total data'+'\\'+f)
 
     #---------------------------------画图-------------------------------------#
-    qfile = os.listdir(ipath+'\\'+name+'\\'+r'total data')
+    qfile = glob.glob(ipath+'\\'+name+'\\'+r'total data'+'\\'+'*.csv')
     for q in qfile:
-        os.chdir(ipath+'\\'+name+'\\'+r'total data')
         data = pd.read_csv(q)
     
-        y = data.loc[:,'SRAD'] #选取温度数据
+        y = data.loc[:,'SRAD'] #选取辐射数据
         x = np.arange(144)
         
         if len(y) == 144:
-            fig = plt.figure()
+            fig = plt.figure(figsize=(12,9))
             ax  = fig.add_subplot(1,1,1)
             
             plt.bar(x,y,label = 'The solar radiation'+'-'+name+'-'+q[-12:-4])
@@ -65,7 +65,7 @@ for name in l:
             yticks = ax.set_yticks([0,100,200,300,400,500,600])
             ylabels = ax.set_yticklabels(['0','100','200','300','400','500','600'])
             #设置图注
-            plt.legend(loc='best',fontsize = 14)
+            plt.legend(loc='best',fontsize = 16)
             plt.grid(True,linestyle='--')
         
         
@@ -87,10 +87,11 @@ for name in l:
         
         else:
             pass
+
+ufile = os.listdir(ipath)
+for u in ufile:
     try:
-        shutil.move(ipath+'\\'+name+'\\'+r'solar radiation',
-                    spath+'\\'+name+'\\'+r'solar radiation')
+        shutil.move(ipath+'\\'+u,spath+'\\'+r'6月份'+'\\'+u)
     except:
         pass
-    
 
